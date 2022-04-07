@@ -103,6 +103,8 @@ public class Program {
 
         System.out.println(gi2.checkBloc(0, 0, '2'));
 
+        System.out.println(gi2.possible(0, 0, '1'));
+
 
 
 

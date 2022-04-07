@@ -24,7 +24,19 @@ public class GrilleImplSecond implements Grille {
 
     @Override
     public boolean complete() {
-        return false;
+        boolean r = false;
+        for(int i = 0; i < this.grille.length; i++){
+            for(int j = 0; j < this.grille.length; j++){
+                if(this.grille[i][j] == EMPTY) {
+                    r = false;
+                }
+                else {
+                    r = true;
+                    break;
+                }
+            }
+        }
+        return r;
     }
 
     @Override
@@ -33,12 +45,27 @@ public class GrilleImplSecond implements Grille {
         List<Character> possibleChar = createListPossible();
 
         if (checkChar(value, possibleChar)) {
-
+            if(checkX(x, value)){
+                if(checkY(y, value)){
+                    if(checkBloc(x, y, value)){
+                        return true;
+                    }
+                    else{
+                        return false;
+                    }
+                }
+                else{
+                    return false;
+                }
+            }
+            else{
+                return false;
+            }
         }
         else {
             return false;
         }
-        return false;
+
     }
 
     // etape 1 : création liste des caractères possibles
@@ -193,9 +220,5 @@ public class GrilleImplSecond implements Grille {
         else {
             return true;
         }
-
-
-
-
     }
 }

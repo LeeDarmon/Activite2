@@ -1,2 +1,4 @@
 /target/
 /out/
+*.jar
+out/artifacts/GROUPE_S_Activite2_jar/GROUPE-S_Activite2.jar
