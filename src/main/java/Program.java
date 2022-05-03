@@ -1,4 +1,3 @@
-import java.io.Console;
 import java.util.Arrays;
 import java.util.List;
 
@@ -10,15 +9,15 @@ public class Program {
 
 
         final char[][] grille = {
-                {9, '@', '@', 1, '@', '@', '@', '@', 5},
-                {'@', '@', 5, '@', 9, '@', 2, '@', 1},
-                {8, '@', '@', '@', 4, '@', '@', '@', '@'},
-                {'@', '@', '@', '@', 8, '@', '@', '@', '@'},
-                {'@', '@', '@', 7, '@', '@', '@', '@', '@'},
-                {'@', '@', '@', '@', 2, 6, '@', '@', 9},
-                {2, '@', '@', 3, '@', '@', '@', '@', 6},
-                {'@', '@', '@', 2, '@', '@', 9, '@', '@'},
-                {'@', '@', 1, 9, '@', 4, 5, 7, '@'},
+                {'9', '@', '@', '1', '@', '@', '@', '@', '5'},
+                {'@', '@', '5', '@', '9', '@', '2', '@', '1'},
+                {'8', '@', '@', '@', '4', '@', '@', '@', '@'},
+                {'@', '@', '@', '@', '8', '@', '@', '@', '@'},
+                {'@', '@', '@', '7', '@', '@', '@', '@', '@'},
+                {'@', '@', '@', '@', '2', '6', '@', '@', '9'},
+                {'2', '@', '@', '3', '@', '@', '@', '@', '6'},
+                {'@', '@', '@', '2', '@', '@', '9', '@', '@'},
+                {'@', '@', '1', '9', '@', '4', '5', '7', '@'},
         };
 
         final char[][] grilleEmpty = {
@@ -33,15 +32,15 @@ public class Program {
                 {'@', '@', '@', '@', '@', '@', '@', '@', '@'},
         };
         final char[][] grilleExtended = {
-                {9, '@', '@', 1, '@', '@', '@', '@', 5},
-                {'@', '@', 5, '@', 9, '@', 2, '@', 1},
-                {8, '@', '@', '@', 4, '@', '@', '@', '@'},
-                {'@', '@', '@', '@', 8, '@', '@', '@', '@'},
-                {'@', '@', '@', 7, '@', '@', '@', '@', '@'},
-                {'@', '@', '@', '@', 2, 6, '@', '@', 9},
-                {2, '@', '@', 3, '@', '@', '@', '@', 6},
-                {'@', '@', '@', 2, '@', '@', 9, '@', '@'},
-                {'@', '@', 1, 9, '@', 4, 5, 7, '@'},
+                {'9', '@', '@', '1', '@', '@', '@', '@', '5'},
+                {'@', '@', '5', '@', '9', '@', '2', '@', '1'},
+                {'8', '@', '@', '@', '4', '@', '@', '@', '@'},
+                {'@', '@', '@', '@', '8', '@', '@', '@', '@'},
+                {'@', '@', '@', '7', '@', '@', '@', '@', '@'},
+                {'@', '@', '@', '@', '2', '6', '@', '@', '9'},
+                {'2', '@', '@', '3', '@', '@', '@', '@', '6'},
+                {'@', '@', '@', '2', '@', '@', '9', '@', '@'},
+                {'@', '@', '1', '9', '@', '4', '5', '7', '@'},
         };
 
        // gi.grille = grille;
@@ -104,12 +103,53 @@ public class Program {
         System.out.println(gi2.checkBloc(0, 0, '2'));
 
         System.out.println(gi2.possible(0, 0, '1'));
-
-
+        if(ResoudreSudoku(gi2,0, 0)){
+            System.out.println("\n");
+        } else {
+            System.out.println("Pas de solution");
+        }
 
 
 
     }
 
-    }
+    public static boolean ResoudreSudoku(Grille gi, int ligne,
+                                         int col){
+            char[] possibleChars = gi.possible;
 
+
+            if (ligne == gi.getDimension() - 1 && col == gi.getDimension())
+            {
+                return true;
+            }
+
+            //On check la colonne et on change en fonction
+            if (col == gi.getDimension()-1) {
+                ligne++;
+                col = 0;
+            }
+
+            //S'il y a deja une valeur, on itere sur la prochaine casse
+            if (gi.getValue(ligne, col) != '@')
+                return ResoudreSudoku(gi, ligne, col + 1);
+
+            for (int num = 0; num < gi.getDimension() -1 ; num++) {
+                char currentChar = possibleChars[num];
+
+                //On regarde si c'est possible à la pos actuelle
+                if (gi.possible(ligne, col, currentChar)) {
+
+
+                    //On pose la valeur souhaite si c'est possible de la poser
+                    gi.setValue(ligne, col, currentChar);
+
+                    //On continue à la prochaine case
+                    if (ResoudreSudoku(gi, ligne, col + 1))
+                        return true;
+                }
+
+                gi.setValue(ligne, col, '@');
+            }
+            return false;
+        }
+}

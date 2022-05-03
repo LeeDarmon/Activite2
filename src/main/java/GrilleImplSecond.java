@@ -39,6 +39,15 @@ public class GrilleImplSecond implements Grille {
         return r;
     }
 
+    public void displayGrille(){
+        for (int y = 0; y < this.getDimension(); y++){
+        for (int x = 0; x < this.getDimension(); x++) {
+                System.out.print(this.getValue(x, y) + " ");
+            }
+        System.out.println("\n");
+        }
+    }
+
     @Override
     public boolean possible(int x, int y, char value) throws IllegalArgumentException {
 
@@ -67,6 +76,8 @@ public class GrilleImplSecond implements Grille {
         }
 
     }
+
+
 
     // etape 1 : création liste des caractères possibles
     public List<Character> createListPossible() {
