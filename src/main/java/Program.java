@@ -1,11 +1,12 @@
 import java.util.Arrays;
 import java.util.List;
 
-public class Program {
-    public static void main (String[] args) {
+final class Program {
+    private Program() {
+        throw new UnsupportedOperationException();
+    }
+    public static void main(final String[] args) {
        // System.out.println("Hello World");
-
-        GrilleImpl gi = new GrilleImpl();
 
 
         final char[][] grille = {
@@ -54,7 +55,7 @@ public class Program {
 
         //tests lee
         GrilleImplSecond gi2 = new GrilleImplSecond();
-        gi2.grille = grilleEmpty;
+        gi2.setGrille(grilleEmpty);
 
         //ligne 1
         gi2.setValue(0,0,'9');
@@ -81,7 +82,7 @@ public class Program {
 
 
 
-        System.out.println(Arrays.deepToString(gi2.grille));
+        System.out.println(Arrays.deepToString(gi2.getGrille()));
 
 
 
@@ -91,7 +92,7 @@ public class Program {
 
         System.out.println(gi2.checkChar('3', possibleChar));
 
-       for (int i = 0; i < gi2.grille.length; i++) {
+       for (int i = 0; i < gi2.getGrille().length; i++) {
 
         System.out.println(gi2.getValue(0,i));
        }

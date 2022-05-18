@@ -1,11 +1,10 @@
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 
 
-public class GrilleImpl implements Grille{
+public class GrilleImpl implements Grille {
     public char[][] grille;
 
     @Override
