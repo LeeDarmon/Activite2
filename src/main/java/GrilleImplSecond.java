@@ -159,8 +159,7 @@ public class GrilleImplSecond implements Grille {
      * @param value Valeur teste pour placement en x dans la grille
      * @return true si la valeur est placable sur la ligne x
      */
-    public boolean checkX(final int x,
-                          final char value) throws IllegalArgumentException {
+    public boolean checkX(final int x, final char value) throws IllegalArgumentException {
         List<Character> impossibleChar = new ArrayList();
        for (int i = 0; i < grille.length; i++) {
            impossibleChar.add(getValue(x, i));
@@ -173,9 +172,7 @@ public class GrilleImplSecond implements Grille {
      * @param value Valeur teste pour placement en y dans la grille
      * @return true si la valeur est placable sur la colonne y
      */
-    public boolean checkY(final int y,
-                          final char value)
-            throws IllegalArgumentException {
+    public boolean checkY(final int y, final char value) throws IllegalArgumentException {
         List<Character> impossibleChar = new ArrayList();
         for (int i = 0; i < grille.length; i++) {
             impossibleChar.add(getValue(i, y));
