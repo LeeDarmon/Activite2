@@ -44,21 +44,13 @@ final class Program {
                 {'@', '@', '1', '9', '@', '4', '5', '7', '@'},
         };
 
-       // gi.grille = grille;
-
-
-     //   System.out.println(gi.getDimension());
-      //  System.out.println("get 1"+gi.getValue(1, 1));
-      //  gi.setValue(1, 1, '1');
-      //  System.out.println(gi.getValue(1, 1));
-     //   System.out.println(gi.possible(1, 1, '9'));
 
         //tests lee
         GrilleImplSecond gi2 = new GrilleImplSecond();
         gi2.setGrille(grilleEmpty);
 
         //ligne 1
-        gi2.setValue(0,0,'9');
+
         gi2.setValue(0,1,'@');
         gi2.setValue(0,2,'1');
         gi2.setValue(0,3,'@');

@@ -1,15 +1,23 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 
 
-public class GrilleImpl implements Grille {
+public class GrilleImpl implements Grille{
+    private int taille;
     public char[][] grille;
+
+    public GrilleImpl(int taille, char[][] grille){
+        this.taille = taille;
+        this.grille = grille;
+    }
 
     @Override
     public int getDimension() {
-        return grille.length;
+        return this.taille;
+        //return grille.length;
     }
 
     @Override
