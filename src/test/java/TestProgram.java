@@ -71,20 +71,61 @@ public class TestProgram {
 
     @Test
     void complete() {
-        assertFalse(ObjetGrille1.complete());
-        assertTrue(ObjetGrilleComplete.complete());
+        final char[][] grillecomplete = {
+                {'9', '4', '2', '1', '7', '7', '3', '3', '5'},
+                {'1', '4', '5', '1', '9', '7', '2', '3', '1'},
+                {'8', '3', '3', '1', '4', '6', '3', '4', '3'},
+                {'2', '5', '3', '2', '8', '6', '3', '5', '4'},
+                {'1', '3', '2', '7', '7', '4', '3', '3', '3'},
+                {'1', '3', '3', '3', '2', '3', '3', '2', '9'},
+                {'2', '2', '3', '3', '7', '3', '3', '3', '6'},
+                {'2', '3', '1', '2', '2', '3', '9', '4', '3'},
+                {'2', '1', '1', '9', '3', '4', '5', '7', '3'},
+        };
+
+        GrilleImplSecond ObjetGrilleComplete = new GrilleImplSecond();
+        ObjetGrilleComplete.setGrille(grillecomplete);
+        Assertions.assertTrue(ObjetGrilleComplete.complete());
+
+        final char[][] grilleEmpty = {
+                {'@', '@', '@', '@', '@', '@', '@', '@', '@'},
+                {'@', '@', '@', '@', '@', '@', '@', '@', '@'},
+                {'@', '@', '@', '@', '@', '@', '@', '@', '@'},
+                {'@', '@', '@', '@', '@', '@', '@', '@', '@'},
+                {'@', '@', '@', '@', '@', '@', '@', '@', '@'},
+                {'@', '@', '@', '@', '@', '@', '@', '@', '@'},
+                {'@', '@', '@', '@', '@', '@', '@', '@', '@'},
+                {'@', '@', '@', '@', '@', '@', '@', '@', '@'},
+                {'@', '@', '@', '@', '@', '@', '@', '@', '@'},
+        };
+        ObjetGrilleComplete.setGrille(grilleEmpty);
+        Assertions.assertFalse(ObjetGrilleComplete.complete());
+
+
     }
 
     @Test
     void possible() {
-        gi2.setGrille(grille);
+        final char[][] grille = {
+            {'9', '@', '@', '1', '@', '@', '@', '@', '5'},
+            {'@', '@', '5', '@', '9', '@', '2', '@', '1'},
+            {'8', '@', '@', '@', '4', '@', '@', '@', '@'},
+            {'@', '@', '@', '@', '8', '@', '@', '@', '@'},
+            {'@', '@', '@', '7', '@', '@', '@', '@', '@'},
+            {'@', '@', '@', '@', '2', '6', '@', '@', '9'},
+            {'2', '@', '@', '3', '@', '@', '@', '@', '6'},
+            {'@', '@', '@', '2', '@', '@', '9', '@', '@'},
+            {'@', '@', '1', '9', '@', '4', '5', '7', '@'},
+        };
+        GrilleImplSecond ObjetGrille1 = new GrilleImplSecond();
+        ObjetGrille1.setGrille(grille);
         char value = '4';
         int x = 0;
         int y = 0;
         int x2 = 2;
         int y2 = 1;
-        gi2.setValue(x, y, value);
-        assertTrue(gi2.possible(x2, y2, value));
+        assertTrue(ObjetGrille1.possible(x, y, value));
+        assertFalse(ObjetGrille1.possible(x2, y2, value));
     }
 
     @Test
@@ -94,10 +135,18 @@ public class TestProgram {
     }
     @Test
     void createListPossible(){
+        GrilleImplSecond ObjetGrilleComplete = new GrilleImplSecond();
+        ObjetGrilleComplete.setGrille(grille);
+        List<Character> c = ObjetGrilleComplete.createListPossible();
+        Assertions.assertNotNull(c);
     }
 
     @Test
     void checkChar(){
+        GrilleImplSecond ObjetGrilleComplete = new GrilleImplSecond();
+        ObjetGrilleComplete.setGrille(grille);
+        List<Character> c = ObjetGrilleComplete.createListPossible();
+        Assertions.assertTrue(ObjetGrilleComplete.checkChar('1', c));
     }
 
     @Test
@@ -157,5 +206,31 @@ public class TestProgram {
         ObjetGrilleComplete.setGrille(grille);
 
         Assertions.assertTrue(ObjetGrilleComplete.checkBloc(0, 0, '3'));
+
+
+        final char[][] grilleExtend = {
+                {'9', '@', '@', '1', '@', '@', '@', '@', '5', '9', '@', '@', '1', '@', '@', '@', '@', '5'},
+                {'@', '@', '5', '@', '9', '@', '2', '@', '1', '@', '@', '5', '@', '9', '@', '2', '@', '1'},
+                {'8', '@', '@', '@', '4', '@', '@', '@', '@', '8', '@', '@', '@', '4', '@', '@', '@', '@'},
+                {'@', '@', '@', '@', '8', '@', '@', '@', '@', '@', '@', '@', '@', '8', '@', '@', '@', '@'},
+                {'@', '@', '@', '7', '@', '@', '@', '@', '@', '@', '@', '@', '7', '@', '@', '@', '@', '@'},
+                {'@', '@', '@', '@', '2', '6', '@', '@', '9', '@', '@', '@', '@', '2', '6', '@', '@', '9'},
+                {'2', '@', '@', '3', '@', '@', '@', '@', '6', '2', '@', '@', '3', '@', '@', '@', '@', '6'},
+                {'@', '@', '@', '2', '@', '@', '9', '@', '@', '@', '@', '@', '2', '@', '@', '9', '@', '@'},
+                {'@', '@', '1', '9', '@', '4', '5', '7', '@', '@', '@', '1', '9', '@', '4', '5', '7', '@'},
+                {'9', '@', '@', '1', '@', '@', '@', '@', '5', '9', '@', '@', '1', '@', '@', '@', '@', '5'},
+                {'@', '@', '5', '@', '9', '@', '2', '@', '1', '@', '@', '5', '@', '9', '@', '2', '@', '1'},
+                {'8', '@', '@', '@', '4', '@', '@', '@', '@', '8', '@', '@', '@', '4', '@', '@', '@', '@'},
+                {'@', '@', '@', '@', '8', '@', '@', '@', '@', '@', '@', '@', '@', '8', '@', '@', '@', '@'},
+                {'@', '@', '@', '7', '@', '@', '@', '@', '@', '@', '@', '@', '7', '@', '@', '@', '@', '@'},
+                {'@', '@', '@', '@', '2', '6', '@', '@', '9', '@', '@', '@', '@', '2', '6', '@', '@', '9'},
+                {'2', '@', '@', '3', '@', '@', '@', '@', '6', '2', '@', '@', '3', '@', '@', '@', '@', '6'},
+                {'@', '@', '@', '2', '@', '@', '9', '@', '@', '@', '@', '@', '2', '@', '@', '9', '@', '@'},
+                {'@', '@', '1', '9', '@', '4', '5', '7', '@', '@', '@', '1', '9', '@', '4', '5', '7', '@'},
+        };
+        GrilleImplSecond ObjetGrilleExtendComplete = new GrilleImplSecond();
+        ObjetGrilleExtendComplete.setGrille(grilleExtend);
+        Assertions.assertTrue(ObjetGrilleExtendComplete.checkBloc(0, 0, '3'));
+
     }
 }
