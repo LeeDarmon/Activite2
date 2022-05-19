@@ -22,6 +22,7 @@ final class Program {
         gi3.setGrille(grille);
         gi3.displayGrille();
         Solveur s = new Solveur(gi3);
+        /*
         System.out.println("\nTest resolution :");
         if (s.resoudreSudoku()) {
             System.out.println("Reussite");
@@ -30,5 +31,7 @@ final class Program {
             System.out.println("Pas de solution");
             gi3.displayGrille();
         }
+        
+         */
     }
 }
