@@ -102,8 +102,8 @@ public class GrilleImplSecond implements Grille {
         List<Character> possibleChar = createListPossible();
 
         if (checkChar(v, possibleChar)) {
-            if (checkX(x, v)) {
-                if (checkY(y, v)) {
+            if (!checkX(x, v)) {
+                if (!checkY(y, v)) {
                     return checkBloc(x, y, v);
                 } else {
                     return false;
