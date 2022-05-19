@@ -84,4 +84,24 @@ public class TestProgram {
         gi2.setValue(x, y, value);
         assertTrue(gi2.possible(x2, y2, value));
     }
+
+    @Test
+    void createListPossible(){
+    }
+
+    @Test
+    void checkChar(){
+    }
+
+    @Test
+    void checkX(){
+    }
+
+    @Test
+    void checkY(){
+    }
+
+    @Test
+    void checkBlock(){
+    }
 }
