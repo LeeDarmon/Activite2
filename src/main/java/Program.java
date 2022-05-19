@@ -32,6 +32,8 @@ final class Program {
                 {'@', '@', '@', '@', '@', '@', '@', '@', '@'},
                 {'@', '@', '@', '@', '@', '@', '@', '@', '@'},
         };
+
+        /*
         final char[][] grilleExtended = {
                 {'9', '@', '@', '1', '@', '@', '@', '@', '5'},
                 {'@', '@', '5', '@', '9', '@', '2', '@', '1'},
@@ -43,11 +45,12 @@ final class Program {
                 {'@', '@', '@', '2', '@', '@', '9', '@', '@'},
                 {'@', '@', '1', '9', '@', '4', '5', '7', '@'},
         };
+        */
 
 
         //tests lee
         GrilleImplSecond gi2 = new GrilleImplSecond();
-        gi2.setGrille(grilleEmpty);
+        gi2.setGrille(grille);
 
         //ligne 1
 
@@ -96,53 +99,51 @@ final class Program {
         System.out.println(gi2.checkBloc(0, 0, '2'));
 
         System.out.println(gi2.possible(0, 0, '1'));
-        if(ResoudreSudoku(gi2,0, 0)){
-            System.out.println("\n");
+
+
+        GrilleImplSecond gi3 = new GrilleImplSecond();
+        gi3.setGrille(grille);
+        gi3.displayGrille();
+        System.out.println("\nTest resolution :");
+        if(resoudreSudoku(gi3, 0, 0)){
+            System.out.println("Reussite");
+            gi3.displayGrille();
         } else {
             System.out.println("Pas de solution");
+            gi3.displayGrille();
         }
 
 
 
     }
 
-    public static boolean ResoudreSudoku(Grille gi, int ligne,
-                                         int col){
+    public static boolean resoudreSudoku(GrilleImplSecond g, int li,
+                                         int co) {
+            System.out.println("Iteration " + "Ligne : " + li + " colonne :" + co);
+            int ligne = li;
+            int col = co;
+            GrilleImplSecond gi = g;
             char[] possibleChars = gi.possible;
-
-
-            if (ligne == gi.getDimension() - 1 && col == gi.getDimension())
-            {
-                return true;
-            }
-
-            //On check la colonne et on change en fonction
-            if (col == gi.getDimension()-1) {
-                ligne++;
-                col = 0;
-            }
-
-            //S'il y a deja une valeur, on itere sur la prochaine casse
-            if (gi.getValue(ligne, col) != '@')
-                return ResoudreSudoku(gi, ligne, col + 1);
-
-            for (int num = 0; num < gi.getDimension() -1 ; num++) {
-                char currentChar = possibleChars[num];
-
-                //On regarde si c'est possible à la pos actuelle
-                if (gi.possible(ligne, col, currentChar)) {
-
-
-                    //On pose la valeur souhaite si c'est possible de la poser
-                    gi.setValue(ligne, col, currentChar);
-
-                    //On continue à la prochaine case
-                    if (ResoudreSudoku(gi, ligne, col + 1))
-                        return true;
+            gi.displayGrille();
+            for(int x = 0; x < g.getDimension(); x++){
+                for(int y = 0; y < g.getDimension(); y++){
+                    if(g.getValue(x, y) == Grille.EMPTY){
+                        for(int n = 0; n <= g.getDimension(); n++){
+                            char currentChar = possibleChars[n];
+                            if (gi.possible(x, y, currentChar)) {
+                                gi.setValue(x, y, currentChar);
+                                if(resoudreSudoku(gi, 0, 0)){
+                                    return true;
+                                } else {
+                                    gi.setValue(ligne, col, Grille.EMPTY);
+                                }
+                            }
+                            }
+                        return false;
+                    }
                 }
-
-                gi.setValue(ligne, col, '@');
             }
-            return false;
+            return true;
         }
+
 }

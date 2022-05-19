@@ -3,8 +3,7 @@ import org.junit.jupiter.api.Test;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class TestProgram {
 
@@ -19,7 +18,8 @@ public class TestProgram {
             {'@', '@', '@', '2', '@', '@', '9', '@', '@'},
             {'@', '@', '1', '9', '@', '4', '5', '7', '@'},
     };
-    GrilleImpl ObjetGrille1 = new GrilleImpl(9, grille);
+    GrilleImplSecond ObjetGrille1 = new GrilleImplSecond();
+
 
     final char[][] grilleEmpty = {
             {'@', '@', '@', '@', '@', '@', '@', '@', '@'},
@@ -33,7 +33,7 @@ public class TestProgram {
             {'@', '@', '@', '@', '@', '@', '@', '@', '@'},
     };
 
-    GrilleImpl ObjetGrilleVide = new GrilleImpl(9, grilleEmpty);
+    GrilleImplSecond ObjetGrilleVide = new GrilleImplSecond();
 
     final char[][] grillecomplete = {
             {'9', '4', '2', '1', '7', '7', '3', '3', '5'},
@@ -47,7 +47,7 @@ public class TestProgram {
             {'2', '1', '1', '9', '3', '4', '5', '7', '3'},
     };
 
-    GrilleImpl ObjetGrilleComplete = new GrilleImpl(9, grillecomplete);
+    GrilleImplSecond ObjetGrilleComplete = new GrilleImplSecond();
 
     GrilleImplSecond gi2 = new GrilleImplSecond();
 
@@ -69,8 +69,8 @@ public class TestProgram {
 
     @Test
     void complete() {
-        assertEquals(false, ObjetGrille1.complete());
-        assertEquals(true, ObjetGrilleComplete.complete());
+        assertFalse(ObjetGrille1.complete());
+        assertTrue(ObjetGrilleComplete.complete());
     }
 
     @Test
@@ -82,6 +82,6 @@ public class TestProgram {
         int x2 = 2;
         int y2 = 1;
         gi2.setValue(x, y, value);
-        assertEquals(true, gi2.possible(x2, y2, value));
+        assertTrue(gi2.possible(x2, y2, value));
     }
 }
