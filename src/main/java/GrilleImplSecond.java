@@ -102,8 +102,8 @@ public class GrilleImplSecond implements Grille {
         List<Character> possibleChar = createListPossible();
 
         if (checkChar(v, possibleChar)) {
-            if (!checkX(x, v)) {
-                if (!checkY(y, v)) {
+            if (checkX(x, v)) {
+                if (checkY(y, v)) {
                     return checkBloc(x, y, v);
                 } else {
                     return false;
@@ -145,7 +145,7 @@ public class GrilleImplSecond implements Grille {
     /** Verifie la liste des caracteres pour le char passe en parametre.
      *
      * @param value La valeur teste
-     * @param possibleChar La liste de tous les caracteres dans la grille
+     * @param possibleChar La liste de tous les caracteres dans la liste
      * @return true si la valeur est dans la liste
      */
     public boolean checkChar(final char value,
@@ -159,12 +159,13 @@ public class GrilleImplSecond implements Grille {
      * @param value Valeur teste pour placement en x dans la grille
      * @return true si la valeur est placable sur la ligne x
      */
-    public boolean checkX(final int x, final char value) throws IllegalArgumentException {
+    public boolean checkX(final int x,
+                          final char value) throws IllegalArgumentException {
         List<Character> impossibleChar = new ArrayList();
        for (int i = 0; i < grille.length; i++) {
            impossibleChar.add(getValue(x, i));
        }
-       return impossibleChar.contains(value);
+       return !impossibleChar.contains(value);
     }
 
     /** Verifie qu'un caractere value peut etre pose en testant sa colonne y.
@@ -172,12 +173,13 @@ public class GrilleImplSecond implements Grille {
      * @param value Valeur teste pour placement en y dans la grille
      * @return true si la valeur est placable sur la colonne y
      */
-    public boolean checkY(final int y, final char value) throws IllegalArgumentException {
+    public boolean checkY(final int y,
+                          final char value) throws IllegalArgumentException {
         List<Character> impossibleChar = new ArrayList();
         for (int i = 0; i < grille.length; i++) {
             impossibleChar.add(getValue(i, y));
         }
-        return impossibleChar.contains(value);
+        return !impossibleChar.contains(value);
     }
 
     /** Verifie un caractere value en testant son bloc a la position x, y.
@@ -283,7 +285,7 @@ public class GrilleImplSecond implements Grille {
                         char v3 = getValue(i, 2);
                         char v4 = getValue(i, 3);
 
-                        Collections.addAll(impossibleChar, v1, v2, v3,v4);
+                        Collections.addAll(impossibleChar, v1, v2, v3, v4);
                     }
                 } else if (y + diff <= 8) {
                     for (int i = 0; i <= c; i++) {
@@ -291,7 +293,7 @@ public class GrilleImplSecond implements Grille {
                         char v2 = getValue(i, 5);
                         char v3 = getValue(i, 6);
                         char v4 = getValue(i, 7);
-                        Collections.addAll(impossibleChar, v1, v2, v3,v4);
+                        Collections.addAll(impossibleChar, v1, v2, v3, v4);
                     }
                 } else if (y + diff <= 12) {
                     for (int i = 0; i <= c; i++) {
@@ -299,7 +301,7 @@ public class GrilleImplSecond implements Grille {
                         char v2 = getValue(i, 9);
                         char v3 = getValue(i, 10);
                         char v4 = getValue(i, 11);
-                        Collections.addAll(impossibleChar, v1, v2, v3,v4);
+                        Collections.addAll(impossibleChar, v1, v2, v3, v4);
                     }
                 }
                 else if (y + diff <= 16) {
@@ -308,7 +310,7 @@ public class GrilleImplSecond implements Grille {
                         char v2 = getValue(i, 13);
                         char v3 = getValue(i, 14);
                         char v4 = getValue(i, 15);
-                        Collections.addAll(impossibleChar, v1, v2, v3,v4);
+                        Collections.addAll(impossibleChar, v1, v2, v3, v4);
                     }
                 }
             } else if (x + diff <= 8) {
@@ -320,7 +322,7 @@ public class GrilleImplSecond implements Grille {
                         char v3 = getValue(i, 2);
                         char v4 = getValue(i, 3);
 
-                        Collections.addAll(impossibleChar, v1, v2, v3,v4);
+                        Collections.addAll(impossibleChar, v1, v2, v3, v4);
                     }
                 } else if (y + diff <= 8) {
                     for (int i = 4; i <= c; i++) {
@@ -328,7 +330,7 @@ public class GrilleImplSecond implements Grille {
                         char v2 = getValue(i, 5);
                         char v3 = getValue(i, 6);
                         char v4 = getValue(i, 7);
-                        Collections.addAll(impossibleChar, v1, v2, v3,v4);
+                        Collections.addAll(impossibleChar, v1, v2, v3, v4);
                     }
                 } else if (y + diff <= 12) {
                     for (int i = 4; i <= c; i++) {
@@ -336,7 +338,7 @@ public class GrilleImplSecond implements Grille {
                         char v2 = getValue(i, 9);
                         char v3 = getValue(i, 10);
                         char v4 = getValue(i, 11);
-                        Collections.addAll(impossibleChar, v1, v2, v3,v4);
+                        Collections.addAll(impossibleChar, v1, v2, v3, v4);
                     }
                 } else if (y + diff <= 16) {
                     for (int i = 4; i <= c; i++) {
@@ -344,7 +346,7 @@ public class GrilleImplSecond implements Grille {
                         char v2 = getValue(i, 13);
                         char v3 = getValue(i, 14);
                         char v4 = getValue(i, 15);
-                        Collections.addAll(impossibleChar, v1, v2, v3,v4);
+                        Collections.addAll(impossibleChar, v1, v2, v3, v4);
                     }
                 }
             } else if (x + diff <= 12) {
@@ -356,7 +358,7 @@ public class GrilleImplSecond implements Grille {
                         char v3 = getValue(i, 2);
                         char v4 = getValue(i, 3);
 
-                        Collections.addAll(impossibleChar, v1, v2, v3,v4);
+                        Collections.addAll(impossibleChar, v1, v2, v3, v4);
                     }
                 } else if (y + diff <= 8) {
                     for (int i = 8; i <= c; i++) {
@@ -364,7 +366,7 @@ public class GrilleImplSecond implements Grille {
                         char v2 = getValue(i, 5);
                         char v3 = getValue(i, 6);
                         char v4 = getValue(i, 7);
-                        Collections.addAll(impossibleChar, v1, v2, v3,v4);
+                        Collections.addAll(impossibleChar, v1, v2, v3, v4);
                     }
                 } else if (y + diff <= 12) {
                     for (int i = 8; i <= c; i++) {
@@ -372,7 +374,7 @@ public class GrilleImplSecond implements Grille {
                         char v2 = getValue(i, 9);
                         char v3 = getValue(i, 10);
                         char v4 = getValue(i, 11);
-                        Collections.addAll(impossibleChar, v1, v2, v3,v4);
+                        Collections.addAll(impossibleChar, v1, v2, v3, v4);
                     }
                 }
                 else if (y + diff <= 16) {
@@ -381,7 +383,7 @@ public class GrilleImplSecond implements Grille {
                         char v2 = getValue(i, 13);
                         char v3 = getValue(i, 14);
                         char v4 = getValue(i, 15);
-                        Collections.addAll(impossibleChar, v1, v2, v3,v4);
+                        Collections.addAll(impossibleChar, v1, v2, v3, v4);
                     }
                 }
             } else if (x + diff <= 16) {
@@ -393,7 +395,7 @@ public class GrilleImplSecond implements Grille {
                         char v3 = getValue(i, 2);
                         char v4 = getValue(i, 3);
 
-                        Collections.addAll(impossibleChar, v1, v2, v3,v4);
+                        Collections.addAll(impossibleChar, v1, v2, v3, v4);
                     }
                 } else if (y + diff <= 8) {
                     for (int i = 12; i <= c; i++) {
@@ -401,7 +403,7 @@ public class GrilleImplSecond implements Grille {
                         char v2 = getValue(i, 5);
                         char v3 = getValue(i, 6);
                         char v4 = getValue(i, 7);
-                        Collections.addAll(impossibleChar, v1, v2, v3,v4);
+                        Collections.addAll(impossibleChar, v1, v2, v3, v4);
                     }
                 } else if (y + diff <= 12) {
                     for (int i = 12; i <= c; i++) {
@@ -409,16 +411,15 @@ public class GrilleImplSecond implements Grille {
                         char v2 = getValue(i, 9);
                         char v3 = getValue(i, 10);
                         char v4 = getValue(i, 11);
-                        Collections.addAll(impossibleChar, v1, v2, v3,v4);
+                        Collections.addAll(impossibleChar, v1, v2, v3, v4);
                     }
-                }
-                else if (y + diff <= 16) {
+                } else if (y + diff <= 16) {
                     for (int i = 12; i <= c; i++) {
                         char v1 = getValue(i, 12);
                         char v2 = getValue(i, 13);
                         char v3 = getValue(i, 14);
                         char v4 = getValue(i, 15);
-                        Collections.addAll(impossibleChar, v1, v2, v3,v4);
+                        Collections.addAll(impossibleChar, v1, v2, v3, v4);
                     }
                 }
             }
@@ -426,6 +427,6 @@ public class GrilleImplSecond implements Grille {
 
         }
         System.out.println(impossibleChar);
-        return impossibleChar.contains(value);
+        return !impossibleChar.contains(value);
     }
 }
