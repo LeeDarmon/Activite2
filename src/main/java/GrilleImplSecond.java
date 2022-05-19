@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class GrilleImplSecond implements Grille {
+public class GrilleImplSecond implements Grille, Cloneable {
 
     /** Grille implementee.
      * Peut faire 9x9 ou 16x16
@@ -12,7 +12,7 @@ public class GrilleImplSecond implements Grille {
      * @return retourne la grille
      */
     public char[][] getGrille() {
-        return grille;
+        return grille.clone();
     }
 
     /** Recupere la grille implementee.
@@ -21,7 +21,13 @@ public class GrilleImplSecond implements Grille {
      *
      */
     public final void setGrille(final char[][] g) {
-        this.grille = g;
+        this.grille = g.clone();
+    }
+
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        super.clone();
+        return new GrilleImplSecond();
     }
 
     @Override
@@ -275,7 +281,7 @@ public class GrilleImplSecond implements Grille {
             }
         }
         //gestion 16 x 16
-        else{
+        else {
             if (x + diff <= 4) {
                 c = 4;
                 if (y + diff <= 4) {

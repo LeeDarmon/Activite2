@@ -4,7 +4,7 @@ final class Program {
     private Program() {
         throw new UnsupportedOperationException();
     }
-    public static void main(final String[] args) {
+    public static void main(final String[] args) throws CloneNotSupportedException {
 
 
         final char[][] grille = {
@@ -21,9 +21,8 @@ final class Program {
         GrilleImplSecond gi3 = new GrilleImplSecond();
         gi3.setGrille(grille);
         gi3.displayGrille();
-        Solveur s = new Solveur(gi3);
-
         /*
+        Solveur s = new Solveur(gi3);
         System.out.println("\nTest resolution :");
         if (s.resoudreSudoku()) {
             System.out.println("Reussite");

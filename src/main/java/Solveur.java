@@ -10,9 +10,8 @@ public class Solveur {
      * Constructeur prenant la grille a resoudre en variable
      * @param g nouvelle grille
      */
-    public Solveur(final Grille g) {
-        Grille gi = g;
-        this.grille = gi;
+    public Solveur(GrilleImplSecond g) throws CloneNotSupportedException {
+        this.grille = g == null ? null : (Grille) g.clone();
     }
 
     /**
