@@ -20,7 +20,7 @@ public class TestSolveur {
     GrilleImplSecond ObjetGrilleVide = new GrilleImplSecond();
 
 
-
+/*
     @Test
     void TestSolveurSolvable() {
         char[][] grilleSolvable = {
@@ -40,5 +40,5 @@ public class TestSolveur {
         Solveur s = new Solveur(ObjetGrille1);
         Assertions.assertTrue(s.resoudreSudoku());
     }
-
+*/
 }
