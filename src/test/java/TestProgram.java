@@ -1,10 +1,7 @@
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class TestProgram {
     @Test
@@ -12,15 +9,15 @@ public class TestProgram {
         final int limitDim = 9;
         final int limitDimExtend = 16;
         final char[][] grillecomplete = {
-                {'9', '4', '2', '1', '7', '7', '3', '3', '5'},
-                {'1', '4', '5', '1', '9', '7', '2', '3', '1'},
-                {'8', '3', '3', '1', '4', '6', '3', '4', '3'},
-                {'2', '5', '3', '2', '8', '6', '3', '5', '4'},
-                {'1', '3', '2', '7', '7', '4', '3', '3', '3'},
-                {'1', '3', '3', '3', '2', '3', '3', '2', '9'},
-                {'2', '2', '3', '3', '7', '3', '3', '3', '6'},
-                {'2', '3', '1', '2', '2', '3', '9', '4', '3'},
-                {'2', '1', '1', '9', '3', '4', '5', '7', '3'},
+                {'3', '9', '1', '2', '8', '6', '5', '7', '4'},
+                {'4', '8', '7', '3', '5', '9', '1', '2', '6'},
+                {'6', '5', '2', '7', '1', '4', '8', '3', '9'},
+                {'8', '7', '5', '4', '3', '1', '6', '9', '2'},
+                {'2', '1', '3', '9', '6', '7', '4', '8', '5'},
+                {'9', '6', '4', '5', '2', '8', '7', '1', '3'},
+                {'1', '4', '9', '6', '7', '3', '2', '5', '8'},
+                {'5', '3', '8', '1', '4', '2', '9', '6', '7'},
+                {'7', '2', '6', '8', '9', '5', '3', '4', '1'},
         };
         GrilleImplSecond objetGrilleComplete = new GrilleImplSecond();
         objetGrilleComplete.setGrille(grillecomplete);
@@ -118,7 +115,7 @@ public class TestProgram {
         };
         GrilleImplSecond objetGrilleComplete = new GrilleImplSecond();
         objetGrilleComplete.setGrille(grillecomplete);
-        Assertions.assertTrue(objetGrilleComplete.complete());
+        assertTrue(objetGrilleComplete.complete());
 
         final char[][] grilleEmpty = {
                 {'@', '@', '@', '@', '@', '@', '@', '@', '@'},
@@ -194,7 +191,7 @@ public class TestProgram {
         GrilleImplSecond objetGrilleComplete = new GrilleImplSecond();
         objetGrilleComplete.setGrille(grille);
         List<Character> c = objetGrilleComplete.createListPossible();
-        Assertions.assertNotNull(c);
+        assertNotNull(c);
     }
 
     @Test
@@ -213,7 +210,7 @@ public class TestProgram {
         GrilleImplSecond objetGrilleComplete = new GrilleImplSecond();
         objetGrilleComplete.setGrille(grille);
         List<Character> c = objetGrilleComplete.createListPossible();
-        Assertions.assertTrue(objetGrilleComplete.checkChar('1', c));
+        assertTrue(objetGrilleComplete.checkChar('1', c));
     }
 
     @Test
@@ -232,7 +229,7 @@ public class TestProgram {
         GrilleImplSecond objetGrilleComplete = new GrilleImplSecond();
         objetGrilleComplete.setGrille(grille);
 
-        Assertions.assertTrue(objetGrilleComplete.checkX(0, '3'));
+        assertTrue(objetGrilleComplete.checkX(0, '3'));
 
     }
 
@@ -253,12 +250,18 @@ public class TestProgram {
         objetGrilleComplete.setGrille(grille);
 
         assertFalse(objetGrilleComplete.checkY(0,  '9'));
-        Assertions.assertTrue(objetGrilleComplete.checkY(0,  '3'));
+        assertTrue(objetGrilleComplete.checkY(0,  '3'));
     }
 
     @Test
     void checkBlock() {
-        final char[][] grille = {
+        final int premiereRangee = 0;
+        final int secondeRangee = 3;
+        final int troisiemeRangee = 6;
+        final int quatriemeRangee = 9;
+        final int cinquiemeRangee = 12;
+
+        final char[][] g = {
                 {'9', '@', '@', '1', '@', '@', '@', '@', '5'},
                 {'@', '@', '5', '@', '9', '@', '2', '@', '1'},
                 {'8', '@', '@', '@', '4', '@', '@', '@', '@'},
@@ -269,10 +272,18 @@ public class TestProgram {
                 {'@', '@', '@', '2', '@', '@', '9', '@', '@'},
                 {'@', '@', '1', '9', '@', '4', '5', '7', '@'},
         };
-        GrilleImplSecond objetGrilleComplete = new GrilleImplSecond();
-        objetGrilleComplete.setGrille(grille);
+        GrilleImplSecond grille = new GrilleImplSecond();
+        grille.setGrille(g);
 
-        Assertions.assertTrue(objetGrilleComplete.checkBloc(0, 0, '3'));
+        assertTrue(grille.checkBloc(premiereRangee, premiereRangee, '3'));
+        assertTrue(grille.checkBloc(secondeRangee, premiereRangee, '3'));
+        assertTrue(grille.checkBloc(troisiemeRangee, premiereRangee, '3'));
+        assertTrue(grille.checkBloc(premiereRangee, secondeRangee, '3'));
+        assertTrue(grille.checkBloc(secondeRangee, secondeRangee, '3'));
+        assertTrue(grille.checkBloc(troisiemeRangee, secondeRangee, '3'));
+        assertTrue(grille.checkBloc(premiereRangee, troisiemeRangee, '3'));
+        assertTrue(grille.checkBloc(secondeRangee, troisiemeRangee, '4'));
+        assertTrue(grille.checkBloc(troisiemeRangee, troisiemeRangee, '4'));
 
 
         final char[][] grilleExtend = {
@@ -309,9 +320,33 @@ public class TestProgram {
                 {'2', '@', '@', '3', '@', '@', '@', '@',
                         '6', '2', '@', '@', '3', '@', '@', '@'},
         };
-        GrilleImplSecond objetGrilleExtendComplete = new GrilleImplSecond();
-        objetGrilleExtendComplete.setGrille(grilleExtend);
-        Assertions.assertTrue(objetGrilleExtendComplete.checkBloc(0, 0, '3'));
+        GrilleImplSecond grille2 = new GrilleImplSecond();
+        grille2.setGrille(grilleExtend);
+        assertTrue(grille2.checkBloc(premiereRangee, premiereRangee, '3'));
+        assertTrue(grille2.checkBloc(secondeRangee, premiereRangee, '3'));
+        assertTrue(grille2.checkBloc(troisiemeRangee, premiereRangee, '3'));
+        assertTrue(grille2.checkBloc(quatriemeRangee, premiereRangee, '3'));
+        assertTrue(grille2.checkBloc(cinquiemeRangee, premiereRangee, '3'));
+        assertTrue(grille2.checkBloc(premiereRangee, secondeRangee, '3'));
+        assertTrue(grille2.checkBloc(secondeRangee, secondeRangee, '3'));
+        assertTrue(grille2.checkBloc(troisiemeRangee, secondeRangee, '4'));
+        assertTrue(grille2.checkBloc(quatriemeRangee, secondeRangee, '4'));
+        assertTrue(grille2.checkBloc(cinquiemeRangee, secondeRangee, '4'));
+        assertTrue(grille2.checkBloc(premiereRangee, troisiemeRangee, '3'));
+        assertTrue(grille2.checkBloc(secondeRangee, troisiemeRangee, '4'));
+        assertTrue(grille2.checkBloc(troisiemeRangee, troisiemeRangee, '4'));
+        assertTrue(grille2.checkBloc(quatriemeRangee, troisiemeRangee, '3'));
+        assertTrue(grille2.checkBloc(cinquiemeRangee, troisiemeRangee, '3'));
+        assertTrue(grille2.checkBloc(premiereRangee, quatriemeRangee, '3'));
+        assertTrue(grille2.checkBloc(secondeRangee, quatriemeRangee, '4'));
+        assertTrue(grille2.checkBloc(troisiemeRangee, quatriemeRangee, '4'));
+        assertTrue(grille2.checkBloc(quatriemeRangee, quatriemeRangee, '3'));
+        assertTrue(grille2.checkBloc(cinquiemeRangee, quatriemeRangee, '3'));
+        assertTrue(grille2.checkBloc(premiereRangee, cinquiemeRangee, '3'));
+        assertTrue(grille2.checkBloc(secondeRangee, cinquiemeRangee, '4'));
+        assertTrue(grille2.checkBloc(troisiemeRangee, cinquiemeRangee, '4'));
+        assertTrue(grille2.checkBloc(quatriemeRangee, cinquiemeRangee, '4'));
+        assertTrue(grille2.checkBloc(cinquiemeRangee, cinquiemeRangee, '4'));
 
     }
 }

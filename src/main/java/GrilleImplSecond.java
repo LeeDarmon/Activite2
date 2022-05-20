@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class GrilleImplSecond implements Grille, Cloneable {
+public class GrilleImplSecond implements Grille {
 
     /** Grille implementee.
      * Peut faire 9x9 ou 16x16
@@ -25,43 +25,21 @@ public class GrilleImplSecond implements Grille, Cloneable {
     }
 
     @Override
-    public Object clone() throws CloneNotSupportedException {
-        super.clone();
-        return new GrilleImplSecond();
-    }
-
-    @Override
     public final int getDimension() {
         return grille.length;
     }
 
-    /**
-     * Change la grille implementee.
-     * @param x Valeur x souhaite sur la grille
-     *
-     * @param y Valeur y souhaite sur la grille
-     *
-     * @param v Valeur a inserer
-     *
-     */
     @Override
-    public void setValue(final int x,
-                         final int y,
-                         final char v)
+    public final void setValue(final int x,
+                               final int y,
+                               final char v)
             throws IllegalArgumentException {
         this.grille[x][y] = v;
     }
 
-    /** Change la grille implementee.
-     * @param x Valeur x souhaite sur la grille
-     *
-     * @param y Valeur y souhaite sur la grille
-     *
-     *
-     */
     @Override
-    public char getValue(final int x,
-                         final int y) throws IllegalArgumentException {
+    public final char getValue(final int x,
+                               final int y) throws IllegalArgumentException {
         return this.grille[x][y];
     }
 
@@ -85,24 +63,17 @@ public class GrilleImplSecond implements Grille, Cloneable {
     /** Montre en console la grille et ses valeurs.
      */
     public void displayGrille() {
-        for (int y = 0; y < this.getDimension(); y++) {
         for (int x = 0; x < this.getDimension(); x++) {
+            for (int y = 0; y < this.getDimension(); y++) {
                 System.out.print(this.getValue(x, y) + " ");
             }
-        System.out.println("\n");
+            System.out.println("");
         }
     }
-
-    /** Teste une valeur v pour verifier si la
-     * combinaison est possible.
-     * @param x Valeur x de la grille
-     * @param y Valeur y de la grille
-     * @param v Valeur teste par la methode
-     */
     @Override
-    public boolean possible(final int x,
-                            final int y,
-                            final char v)
+    public final boolean possible(final int x,
+                                  final int y,
+                                  final char v)
             throws IllegalArgumentException {
 
         List<Character> possibleChar = createListPossible();
@@ -122,8 +93,6 @@ public class GrilleImplSecond implements Grille, Cloneable {
         }
 
     }
-
-
 
     /** Creation de la liste des caracteres possibles.
      * @return la liste de caracteres possibles

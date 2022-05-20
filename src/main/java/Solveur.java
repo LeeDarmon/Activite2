@@ -5,31 +5,31 @@ public class Solveur {
     /**
      *  grille a resoudre.
      */
-    private Grille grille;
+    private final Grille grille;
     /**
-     * Constructeur prenant la grille a resoudre en variable
+     * Constructeur prenant la grille a resoudre en variable.
      * @param g nouvelle grille
      */
-    public Solveur(GrilleImplSecond g) throws CloneNotSupportedException {
-        this.grille = g == null ? null : (Grille) g.clone();
+    public Solveur(final Grille g) {
+        this.grille = g;
     }
 
     /**
-     * Fonction recursive pour remplir la grille
+     * Fonction recursive pour remplir la grille.
      * @return true si la grille est remplie correctement
      */
-    public boolean resoudreSudoku(){
+    public boolean resoudreSudoku() {
         char[] possibleChars = this.grille.possible;
         GrilleImplSecond g = (GrilleImplSecond) this.grille;
         g.displayGrille();
-        for(int x = 0; x < g.getDimension(); x++){
-            for(int y = 0; y < g.getDimension(); y++){
-                if(g.getValue(x, y) == Grille.EMPTY){
-                    for(int n = 0; n <= g.getDimension(); n++){
+        for (int x = 0; x < g.getDimension(); x++) {
+            for (int y = 0; y < g.getDimension(); y++) {
+                if (g.getValue(x, y) == Grille.EMPTY) {
+                    for (int n = 0; n <= g.getDimension(); n++) {
                         char currentChar = possibleChars[n];
                         if (g.possible(x, y, currentChar)) {
                             g.setValue(x, y, currentChar);
-                            if(resoudreSudoku()){
+                            if (resoudreSudoku()) {
                                 return true;
                             } else {
                                 g.setValue(x, y, Grille.EMPTY);
