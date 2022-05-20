@@ -194,88 +194,39 @@ public class GrilleImplSecond implements Grille {
         final List<Character> impossibleChar = new ArrayList();
         final int dimension = getDimension();
         int dimensionMinimum = 9;
-        int c = 0;
         final int diff = 1;
-        int valuetoPut = 0;
 
         //gestion 9 x 9
         if (dimension == dimensionMinimum) {
-            if (x + diff <= 3) {
-                c = 3;
-                if (y + diff <= 3) {
-                    for (int i = 0; i <= c; i++) {
-                        char v1 = getValue(i, 0);
-                        char v2 = getValue(i, 1);
-                        char v3 = getValue(i, 2);
-                        Collections.addAll(impossibleChar, v1, v2, v3);
-                    }
-                } else if (y + diff <= 6) {
-                    for (int i = 0; i <= c; i++) {
-                        char v1 = getValue(i, 3);
-                        char v2 = getValue(i, 4);
-                        char v3 = getValue(i, 5);
-                        Collections.addAll(impossibleChar, v1, v2, v3);
-                    }
-                } else if (y + diff <= 9) {
-                    for (int i = 0; i <= c; i++) {
-                        char v1 = getValue(i, 6);
-                        char v2 = getValue(i, 7);
-                        char v3 = getValue(i, 8);
-                        Collections.addAll(impossibleChar, v1, v2, v3);
-                    }
-                }
-            } else if (x + diff <= 6) {
-                c = 6;
-                if (y + diff <= 3) {
-                    for (int i = 3; i <= c; i++) {
-                        char v1 = getValue(i, 0);
-                        char v2 = getValue(i, 1);
-                        char v3 = getValue(i, 2);
-                        Collections.addAll(impossibleChar, v1, v2, v3);
-                    }
-                } else if (y + diff <= 6) {
-                    for (int i = 3; i <= c; i++) {
-                        char v1 = getValue(i, 3);
-                        char v2 = getValue(i, 4);
-                        char v3 = getValue(i, 5);
-                        Collections.addAll(impossibleChar, v1, v2, v3);
-                    }
-                } else if (y + diff <= 9) {
-                    for (int i = 3; i <= c; i++) {
-                        char v1 = getValue(i, 6);
-                        char v2 = getValue(i, 7);
-                        char v3 = getValue(i, 8);
-                        Collections.addAll(impossibleChar, v1, v2, v3);
-                    }
-                }
-            } else if (x + diff <= 9) {
-                c = 9;
-                if (y + diff <= 3) {
-                    for (int i = 6; i <= c; i++) {
-                        char v1 = getValue(i, 0);
-                        char v2 = getValue(i, 1);
-                        char v3 = getValue(i, 2);
-                        Collections.addAll(impossibleChar, v1, v2, v3);
-                    }
-                } else if (y + diff <= 6) {
-                    for (int i = 6; i <= c; i++) {
-                        char v1 = getValue(i, 3);
-                        char v2 = getValue(i, 4);
-                        char v3 = getValue(i, 5);
-                        Collections.addAll(impossibleChar, v1, v2, v3);
-                    }
-                } else if (y + diff <= 9) {
-                    for (int i = 6; i <= c; i++) {
-                        char v1 = getValue(i, 6);
-                        char v2 = getValue(i, 7);
-                        char v3 = getValue(i, 8);
-                        Collections.addAll(impossibleChar, v1, v2, v3);
-                    }
-                }
+            int c = 0;
+            int i = 0;
+            if((x + diff) % 3 <= 1){
+                c = 2;
+                i = 0;
+
             }
+            if((x + diff) % 3 <= 2){
+                c = 5;
+                i = 3;
+
+            }
+            if((x + diff) % 3 <= 3){
+                c = 8;
+                i = 6;
+            }
+
+            for (int j = i; j <= c; j++) {
+                char v1 = getValue(j, i);
+                char v2 = getValue(j, i+1);
+                char v3 = getValue(j, i+2);
+                Collections.addAll(impossibleChar, v1, v2, v3);
+            }
+
+
         }
+
         //gestion 16 x 16
-        else{
+        else {
             if (x + diff <= 4) {
                 c = 4;
                 if (y + diff <= 4) {
@@ -303,8 +254,7 @@ public class GrilleImplSecond implements Grille {
                         char v4 = getValue(i, 11);
                         Collections.addAll(impossibleChar, v1, v2, v3, v4);
                     }
-                }
-                else if (y + diff <= 16) {
+                } else if (y + diff <= 16) {
                     for (int i = 0; i <= c; i++) {
                         char v1 = getValue(i, 12);
                         char v2 = getValue(i, 13);
@@ -376,8 +326,7 @@ public class GrilleImplSecond implements Grille {
                         char v4 = getValue(i, 11);
                         Collections.addAll(impossibleChar, v1, v2, v3, v4);
                     }
-                }
-                else if (y + diff <= 16) {
+                } else if (y + diff <= 16) {
                     for (int i = 8; i <= c; i++) {
                         char v1 = getValue(i, 12);
                         char v2 = getValue(i, 13);
@@ -424,8 +373,12 @@ public class GrilleImplSecond implements Grille {
                 }
             }
 
-
         }
+
+
+
+
+
         System.out.println(impossibleChar);
         return !impossibleChar.contains(value);
     }
