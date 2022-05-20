@@ -1,10 +1,23 @@
+/**
+ * Solveur de sudoku.
+ */
 public class Solveur {
+    /**
+     *  grille a resoudre.
+     */
     private Grille grille;
-
-    public Solveur(Grille g){
-        this.grille = g;
+    /**
+     * Constructeur prenant la grille a resoudre en variable
+     * @param g nouvelle grille
+     */
+    public Solveur(GrilleImplSecond g) throws CloneNotSupportedException {
+        this.grille = g == null ? null : (Grille) g.clone();
     }
 
+    /**
+     * Fonction recursive pour remplir la grille
+     * @return true si la grille est remplie correctement
+     */
     public boolean resoudreSudoku(){
         char[] possibleChars = this.grille.possible;
         GrilleImplSecond g = (GrilleImplSecond) this.grille;
@@ -29,5 +42,4 @@ public class Solveur {
         }
         return true;
     }
-
 }
