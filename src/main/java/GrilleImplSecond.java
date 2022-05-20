@@ -202,10 +202,12 @@ public class GrilleImplSecond implements Grille, Cloneable {
         int dimensionMinimum = 9;
         final int diff = 1;
 
+        int c = 0;
+        int i = 0;
+
         //gestion 9 x 9
         if (dimension == dimensionMinimum) {
-            int c = 0;
-            int i = 0;
+
             if((x + diff) % 3 <= 1){
                 c = 2;
                 i = 0;
@@ -232,7 +234,7 @@ public class GrilleImplSecond implements Grille, Cloneable {
         }
 
         //gestion 16 x 16
-        else {
+      /*  else {
             if (x + diff <= 4) {
                 c = 4;
                 if (y + diff <= 4) {
@@ -379,7 +381,7 @@ public class GrilleImplSecond implements Grille, Cloneable {
                 }
             }
 
-        }
+        } */
 
 
 
