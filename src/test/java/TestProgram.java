@@ -255,11 +255,9 @@ public class TestProgram {
 
     @Test
     void checkBlock() {
-        final int premiereRangee = 0;
-        final int secondeRangee = 3;
-        final int troisiemeRangee = 6;
-        final int quatriemeRangee = 9;
-        final int cinquiemeRangee = 12;
+        int premiereRangee = 0;
+        int secondeRangee = 3;
+        int troisiemeRangee = 6;
 
         final char[][] g = {
                 {'9', '@', '@', '1', '@', '@', '@', '@', '5'},
@@ -285,10 +283,10 @@ public class TestProgram {
         assertTrue(grille.checkBloc(secondeRangee, troisiemeRangee, '4'));
         assertTrue(grille.checkBloc(troisiemeRangee, troisiemeRangee, '4'));
 
-        final int premiereRangee2 = 0;
-        final int secondeRangee2 = 4;
-        final int troisiemeRangee2 = 8;
-        final int quatriemeRangee2 = 12;
+        premiereRangee = 0;
+        secondeRangee = 4;
+        troisiemeRangee = 8;
+        int quatriemeRangee = 12;
 
 
         final char[][] grilleExtend = {
@@ -312,30 +310,28 @@ public class TestProgram {
         GrilleImplSecond grille2 = new GrilleImplSecond();
         grille2.setGrille(grilleExtend);
         assertTrue(grille2.checkBloc(premiereRangee, premiereRangee, '3'));
-        assertTrue(grille2.checkBloc(secondeRangee, premiereRangee, '3'));
+        assertTrue(grille2.checkBloc(secondeRangee, premiereRangee, '5'));
         assertTrue(grille2.checkBloc(troisiemeRangee, premiereRangee, '3'));
-        assertTrue(grille2.checkBloc(quatriemeRangee, premiereRangee, '3'));
-        assertTrue(grille2.checkBloc(cinquiemeRangee, premiereRangee, '4'));
+        assertFalse(grille2.checkBloc(quatriemeRangee, premiereRangee, '3'));
+        assertTrue(grille2.checkBloc(quatriemeRangee, premiereRangee, '4'));
         assertTrue(grille2.checkBloc(premiereRangee, secondeRangee, '3'));
         assertTrue(grille2.checkBloc(secondeRangee, secondeRangee, '3'));
-        assertTrue(grille2.checkBloc(troisiemeRangee, secondeRangee, '4'));
+        assertTrue(grille2.checkBloc(troisiemeRangee, secondeRangee, '8'));
         assertTrue(grille2.checkBloc(quatriemeRangee, secondeRangee, '4'));
-        assertTrue(grille2.checkBloc(cinquiemeRangee, secondeRangee, '4'));
+        assertTrue(grille2.checkBloc(quatriemeRangee, secondeRangee, '4'));
         assertTrue(grille2.checkBloc(premiereRangee, troisiemeRangee, '3'));
         assertTrue(grille2.checkBloc(secondeRangee, troisiemeRangee, '4'));
         assertTrue(grille2.checkBloc(troisiemeRangee, troisiemeRangee, '4'));
         assertTrue(grille2.checkBloc(quatriemeRangee, troisiemeRangee, '3'));
-        assertTrue(grille2.checkBloc(cinquiemeRangee, troisiemeRangee, '3'));
+        assertTrue(grille2.checkBloc(quatriemeRangee, troisiemeRangee, '3'));
         assertTrue(grille2.checkBloc(premiereRangee, quatriemeRangee, '3'));
         assertTrue(grille2.checkBloc(secondeRangee, quatriemeRangee, '4'));
-        assertTrue(grille2.checkBloc(troisiemeRangee, quatriemeRangee, '4'));
-        assertTrue(grille2.checkBloc(quatriemeRangee, quatriemeRangee, '3'));
-        assertTrue(grille2.checkBloc(cinquiemeRangee, quatriemeRangee, '3'));
-        assertTrue(grille2.checkBloc(premiereRangee, cinquiemeRangee, '3'));
-        assertTrue(grille2.checkBloc(secondeRangee, cinquiemeRangee, '4'));
-        assertTrue(grille2.checkBloc(troisiemeRangee, cinquiemeRangee, '4'));
-        assertTrue(grille2.checkBloc(quatriemeRangee, cinquiemeRangee, '4'));
-        assertTrue(grille2.checkBloc(cinquiemeRangee, cinquiemeRangee, '4'));
+        assertTrue(grille2.checkBloc(troisiemeRangee, quatriemeRangee, '8'));
+        assertTrue(grille2.checkBloc(quatriemeRangee, quatriemeRangee, '9'));
+        assertTrue(grille2.checkBloc(premiereRangee, quatriemeRangee, '3'));
+        assertTrue(grille2.checkBloc(secondeRangee, quatriemeRangee, '4'));
+        assertTrue(grille2.checkBloc(quatriemeRangee, quatriemeRangee, '4'));
+        assertTrue(grille2.checkBloc(quatriemeRangee, quatriemeRangee, '4'));
 
     }
 }
