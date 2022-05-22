@@ -199,9 +199,9 @@ public class GrilleImplSecond implements Grille {
             else if((y + diff) / aire <= 3 ){ o = 6; }
 
             for (int j = borne_mini; j <= borne_maxi; j++) {
-                char v1 = getValue(j, borne_mini);
-                char v2 = getValue(j, borne_mini+1);
-                char v3 = getValue(j, borne_mini+2);
+                char v1 = getValue(j, o);
+                char v2 = getValue(j, o+1);
+                char v3 = getValue(j, o+2);
                 Collections.addAll(impossibleChar, v1, v2, v3);
             }
 
