@@ -278,7 +278,7 @@ public class TestProgram {
         assertTrue(grille.checkBloc(troisiemeRangee, premiereRangee, '3'));
         assertTrue(grille.checkBloc(premiereRangee, secondeRangee, '3'));
         assertTrue(grille.checkBloc(secondeRangee, secondeRangee, '3'));
-        assertTrue(grille.checkBloc(troisiemeRangee, secondeRangee, '3'));
+        assertTrue(grille.checkBloc(troisiemeRangee, secondeRangee, '8'));
         assertTrue(grille.checkBloc(premiereRangee, troisiemeRangee, '3'));
         assertTrue(grille.checkBloc(secondeRangee, troisiemeRangee, '4'));
         assertTrue(grille.checkBloc(troisiemeRangee, troisiemeRangee, '4'));
