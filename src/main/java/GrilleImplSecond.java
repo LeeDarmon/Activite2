@@ -169,25 +169,26 @@ public class GrilleImplSecond implements Grille {
         final List<Character> impossibleChar = new ArrayList();
         final int dimension = getDimension();
         int dimensionMinimum = 9;
-        final int diff = 1;
+        final float diff = 1;
 
         int c = 0;
         int i = 0;
 
         //gestion 9 x 9
         if (dimension == dimensionMinimum) {
+            double aire = 3.0;
 
-            if((x + diff) % 3 <= 1){
+            if((x + diff) / aire <= 1){
                 c = 2;
                 i = 0;
 
             }
-            if((x + diff) % 3 <= 2){
+            else if((x + diff) / aire <= 2){
                 c = 5;
                 i = 3;
 
             }
-            if((x + diff) % 3 <= 3){
+            else if((x + diff) / aire <= 3){
                 c = 8;
                 i = 6;
             }
@@ -200,6 +201,39 @@ public class GrilleImplSecond implements Grille {
             }
 
 
+
+
+        }
+        else {
+            double aire = 4.0;
+
+            if((x + diff) / aire <= 1){
+                c = 3;
+                i = 0;
+
+            }
+            else if((x + diff) / aire <= 2){
+                c = 7;
+                i = 4;
+
+            }
+            else if((x + diff) / aire <= 3){
+                c = 11;
+                i = 8;
+            }
+
+            else if((x + diff) / aire <= 4){
+                c = 15;
+                i = 12;
+            }
+
+            for (int j = i; j <= c; j++) {
+                char v1 = getValue(j, i);
+                char v2 = getValue(j, i+1);
+                char v3 = getValue(j, i+2);
+                char v4 = getValue(j, i+3);
+                Collections.addAll(impossibleChar, v1, v2, v3, v4);
+            }
         }
 
         //gestion 16 x 16
@@ -356,7 +390,6 @@ public class GrilleImplSecond implements Grille {
 
 
 
-        System.out.println(impossibleChar);
         return !impossibleChar.contains(value);
     }
 }

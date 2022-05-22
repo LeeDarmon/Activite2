@@ -6,11 +6,12 @@ final class Program {
     }
     public static void main(final String[] args) throws CloneNotSupportedException {
 
+        /* x = ligne / y = colonne */
 
         final char[][] grille = {
                 {'9', '@', '@', '1', '@', '@', '@', '@', '5'},
                 {'@', '@', '5', '@', '9', '@', '2', '@', '1'},
-                {'8', '@', '@', '@', '4', '@', '@', '@', '@'},
+                {'8', '@', '1', '@', '4', '@', '@', '@', '@'},
                 {'@', '@', '@', '@', '8', '@', '@', '@', '@'},
                 {'@', '@', '@', '7', '@', '@', '@', '@', '@'},
                 {'@', '@', '@', '@', '2', '6', '@', '@', '9'},
@@ -20,7 +21,7 @@ final class Program {
         };
         GrilleImplSecond gi3 = new GrilleImplSecond();
         gi3.setGrille(grille);
-        gi3.displayGrille();
+        System.out.println(gi3.checkBloc(3,3,'3'));
         /*
         Solveur s = new Solveur(gi3);
         System.out.println("\nTest resolution :");
@@ -33,5 +34,9 @@ final class Program {
         }
 
          */
+
+
+
+
     }
 }
