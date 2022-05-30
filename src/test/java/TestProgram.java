@@ -7,7 +7,13 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
+/**
+ * Tests pour grille.
+ */
 public class TestProgram {
+    /**
+     * Tests methode getDimension().
+     */
     @Test
     void getDimension() {
         final int limitDim = 9;
@@ -23,8 +29,8 @@ public class TestProgram {
                 {'5', '3', '8', '1', '4', '2', '9', '6', '7'},
                 {'7', '2', '6', '8', '9', '5', '3', '4', '1'},
         };
-        GrilleImplSecond objetGrilleComplete = new GrilleImplSecond(grillecomplete);
-        assertEquals(limitDim, objetGrilleComplete.getDimension());
+        GrilleImplSecond g = new GrilleImplSecond(grillecomplete);
+        assertEquals(limitDim, g.getDimension());
         final char[][] grilleExtend;
         grilleExtend = new char[][]{
                 {'9', '@', '@', '1', '@', '@', '@', '@',
@@ -66,6 +72,9 @@ public class TestProgram {
 
     }
 
+    /**
+     * Tests methode setValue().
+     */
     @Test
     void setValue() {
         final char[][] grillecomplete = {
@@ -79,11 +88,14 @@ public class TestProgram {
                 {'2', '3', '1', '2', '2', '3', '9', '4', '3'},
                 {'2', '1', '1', '9', '3', '4', '5', '7', '3'},
         };
-        GrilleImplSecond objetGrilleComplete = new GrilleImplSecond(grillecomplete);
-        objetGrilleComplete.setValue(0, 0, '9');
-        assertEquals('9', objetGrilleComplete.getValue(0, 0));
+        GrilleImplSecond g = new GrilleImplSecond(grillecomplete);
+        g.setValue(0, 0, '9');
+        assertEquals('9', g.getValue(0, 0));
     }
 
+    /**
+     * Tests methode getValue().
+     */
     @Test
     void getValue() {
         final int x = 8;
@@ -99,10 +111,13 @@ public class TestProgram {
                 {'2', '3', '1', '2', '2', '3', '9', '4', '3'},
                 {'2', '1', '1', '9', '3', '4', '5', '7', '3'},
         };
-        GrilleImplSecond objetGrilleComplete = new GrilleImplSecond(grillecomplete);
-        assertEquals('3', objetGrilleComplete.getValue(x, y));
+        GrilleImplSecond g = new GrilleImplSecond(grillecomplete);
+        assertEquals('3', g.getValue(x, y));
     }
 
+    /**
+     * Tests methode complete.
+     */
     @Test
     void complete() {
         final char[][] grillecomplete = {
@@ -116,8 +131,8 @@ public class TestProgram {
                 {'2', '3', '1', '2', '2', '3', '9', '4', '3'},
                 {'2', '1', '1', '9', '3', '4', '5', '7', '3'},
         };
-        GrilleImplSecond objetGrilleComplete = new GrilleImplSecond(grillecomplete);
-        assertTrue(objetGrilleComplete.complete());
+        GrilleImplSecond g = new GrilleImplSecond(grillecomplete);
+        assertTrue(g.complete());
 
         final char[][] grilleEmpty = {
                 {'@', '@', '@', '@', '@', '@', '@', '@', '@'},
@@ -136,7 +151,9 @@ public class TestProgram {
 
 
     }
-
+    /**
+     * Tests methode possible().
+     */
     @Test
     void possible() {
         final char[][] grille = {
@@ -159,7 +176,9 @@ public class TestProgram {
         assertTrue(objetGrille1.possible(x, y, value));
         assertFalse(objetGrille1.possible(x2, y2, value));
     }
-
+    /**
+     * Tests methode displayGrille().
+     */
     @Test
     void displayGrille() {
         final char[][] grille = {
@@ -176,6 +195,9 @@ public class TestProgram {
         GrilleImplSecond objetGrille1 = new GrilleImplSecond(grille);
         objetGrille1.displayGrille();
     }
+    /**
+     * Tests methode createListPossible().
+     */
     @Test
     void createListPossible() {
         final char[][] grille = {
@@ -193,7 +215,9 @@ public class TestProgram {
         List<Character> c = objetGrilleComplete.createListPossible();
         assertNotNull(c);
     }
-
+    /**
+     * Tests methode checkChar().
+     */
     @Test
     void checkChar() {
         final char[][] grille = {
@@ -211,7 +235,9 @@ public class TestProgram {
         List<Character> c = objetGrilleComplete.createListPossible();
         assertTrue(objetGrilleComplete.checkChar('1', c));
     }
-
+    /**
+     * Tests methode checkX().
+     */
     @Test
     void checkX() {
         final char[][] grille = {
@@ -230,7 +256,9 @@ public class TestProgram {
         assertTrue(objetGrilleComplete.checkX(0, '3'));
 
     }
-
+    /**
+     * Tests methode checkY().
+     */
     @Test
     void checkY() {
         final char[][] grille = {
@@ -249,7 +277,9 @@ public class TestProgram {
         assertFalse(objetGrilleComplete.checkY(0,  '9'));
         assertTrue(objetGrilleComplete.checkY(0,  '3'));
     }
-
+    /**
+     * Tests methode checkBlock().
+     */
     @Test
     void checkBlock() {
         final int premiereRangee = 0;

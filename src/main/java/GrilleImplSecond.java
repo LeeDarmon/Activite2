@@ -1,7 +1,9 @@
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
+/**
+ * Implementation de grille.
+ */
 public class GrilleImplSecond implements Grille {
 
     /** Grille implementee.
@@ -56,7 +58,7 @@ public class GrilleImplSecond implements Grille {
 
     /** Montre en console la grille et ses valeurs.
      */
-    public void displayGrille() {
+    public final void displayGrille() {
         for (int x = 0; x < this.getDimension(); x++) {
             for (int y = 0; y < this.getDimension(); y++) {
                 System.out.print(this.getValue(x, y) + " ");
@@ -91,7 +93,7 @@ public class GrilleImplSecond implements Grille {
     /** Creation de la liste des caracteres possibles.
      * @return la liste de caracteres possibles
      */
-    public List<Character> createListPossible() {
+    public final List<Character> createListPossible() {
         //creation tableau possibilités
         int dimension = getDimension();
         //reduction correspond aux caracteres pour la grille 16x16
@@ -116,8 +118,9 @@ public class GrilleImplSecond implements Grille {
      * @param value La valeur teste
      * @param possibleChar La liste de tous les caracteres dans la liste
      * @return true si la valeur est dans la liste
+     * @throws IllegalArgumentException si le param est pas char
      */
-    public boolean checkChar(final char value,
+    public final boolean checkChar(final char value,
                              final List<Character> possibleChar)
             throws IllegalArgumentException {
         return possibleChar.contains(value);
@@ -127,8 +130,9 @@ public class GrilleImplSecond implements Grille {
      * @param x Valeur x sur la grille
      * @param value Valeur teste pour placement en x dans la grille
      * @return true si la valeur est placable sur la ligne x
+     * @throws IllegalArgumentException si le param est pas char
      */
-    public boolean checkX(final int x,
+    public final boolean checkX(final int x,
                           final char value) throws IllegalArgumentException {
         List<Character> impossibleChar = new ArrayList();
        for (int i = 0; i < grille.length; i++) {
@@ -141,8 +145,9 @@ public class GrilleImplSecond implements Grille {
      * @param y Valeur y sur la grille
      * @param value Valeur teste pour placement en y dans la grille
      * @return true si la valeur est placable sur la colonne y
+     * @throws IllegalArgumentException si le param est pas char
      */
-    public boolean checkY(final int y,
+    public final boolean checkY(final int y,
                           final char value) throws IllegalArgumentException {
         List<Character> impossibleChar = new ArrayList();
         for (int i = 0; i < grille.length; i++) {
@@ -156,8 +161,9 @@ public class GrilleImplSecond implements Grille {
      * @param y bloc a la position y dans la grille
      * @param value Valeur teste pour placement x, y dans la grille
      * @return true si la valeur est placable dans le bloc
+     * @throws IllegalArgumentException si le param est pas char
      */
-    public boolean checkBloc(final int x,
+    public final boolean checkBloc(final int x,
                              final int y,
                              final char value) throws IllegalArgumentException {
         final List<Character> impossibleChar = new ArrayList();

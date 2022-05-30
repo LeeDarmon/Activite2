@@ -2,12 +2,15 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 
+/**
+ * Tests pour solveur.
+ */
 public class TestSolveur {
-
-
-
+    /**
+     * Tests methode resoudreSudoku() avec grille complete.
+     */
     @Test
-    void testSolveurSolvableComplet() {
+    void resoudreSudoku() {
         char[][] grilleComplete = {
             {'3', '9', '1', '2', '8', '6', '5', '7', '4'},
             {'4', '8', '7', '3', '5', '9', '1', '2', '6'},
@@ -24,11 +27,7 @@ public class TestSolveur {
         //objetGrille1.setGrille(grilleComplete);
         Solveur s = new Solveur(objetGrille1);
         Assertions.assertTrue(s.resoudreSudoku());
-    }
-
-    @Test
-    void testSolveurSolvable() {
-        char[][] grilleComplete = {
+        char[][] g = {
                 {'3', '9', '1', '2', '8', '6', '5', '7', '4'},
                 {'4', '8', '7', '3', '5', '9', '1', '2', '6'},
                 {'6', '5', '2', '7', '1', '4', '8', '3', '9'},
@@ -40,10 +39,8 @@ public class TestSolveur {
                 {'@', '2', '6', '8', '9', '5', '3', '@', '1'},
         };
 
-        GrilleImplSecond objetGrille1 = new GrilleImplSecond(grilleComplete);
-        //objetGrille1.setGrille(grilleComplete);
-        Solveur s = new Solveur(objetGrille1);
-        Assertions.assertTrue(s.resoudreSudoku());
+        GrilleImplSecond gis = new GrilleImplSecond(g);
+        Solveur s1 = new Solveur(gis);
+        Assertions.assertTrue(s1.resoudreSudoku());
     }
-
 }

@@ -1,4 +1,4 @@
-/*
+/**
 * @author groupeS
 * @version 1.0
 */

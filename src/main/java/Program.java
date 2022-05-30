@@ -1,9 +1,16 @@
-
-
+/**
+ * Programme principale.
+ */
 final class Program {
+    /**
+     * Constructeur de programme principale.
+     */
     private Program() {
         throw new UnsupportedOperationException();
     }
+    /**
+     * Programme principale main().
+     */
     public static void main(final String[] args) {
 
         /* x = ligne / y = colonne */
