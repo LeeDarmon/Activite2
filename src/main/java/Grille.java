@@ -14,7 +14,7 @@ public interface Grille {
      *
      * pour une grille 16x16: 0..9-a..f
      */
-     char[] possible = new char[] {'1', '2', '3', '4', '5', '6',
+    char[] possible = new char[] {'1', '2', '3', '4', '5', '6',
             '7', '8', '9', '0', 'a', 'b', 'c', 'd', 'e', 'f' };
 
     /**

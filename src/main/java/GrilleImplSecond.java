@@ -8,19 +8,13 @@ public class GrilleImplSecond implements Grille {
      * Peut faire 9x9 ou 16x16
      */
     private char[][] grille;
-    /** Grille implementee.
-     * @return retourne la grille
-     */
-    public char[][] getGrille() {
-        return grille.clone();
-    }
 
     /** Recupere la grille implementee.
      *
      * @param g La grille à ajouter
      *
      */
-    public final void setGrille(final char[][] g) {
+    public GrilleImplSecond(final char[][] g) {
         this.grille = g.clone();
     }
 
@@ -168,77 +162,94 @@ public class GrilleImplSecond implements Grille {
                              final char value) throws IllegalArgumentException {
         final List<Character> impossibleChar = new ArrayList();
         final int dimension = getDimension();
-        int dimensionMinimum = 9;
+        final int dimensionMinimum = 9;
         final float diff = 1;
-
-        int borne_maxi = 0;
-        int borne_mini = 0;
+        final int diff1 = 1;
+        final int diff2 = 2;
+        final int diff3 = 3;
+        int borneMaxi = 0;
+        int borneMini = 0;
         int o = 0;
 
         //gestion 9 x 9
         if (dimension == dimensionMinimum) {
-            double aire = 3.0;
+            final double aire;
+            aire = 3.0;
+            if ((x + diff) / aire <= 1) {
+                final int x1 = 2;
+                final int x2 = 0;
+                borneMaxi = x1;
+                borneMini = x2;
 
-            if((x + diff) / aire <= 1){
-                borne_maxi = 2;
-                borne_mini = 0;
+            } else if  ((x + diff) / aire <= 2) {
+                final int x1 = 5;
+                final int x2 = 3;
+                borneMaxi = x1;
+                borneMini = x2;
 
+            } else if ((x + diff) / aire <= (int) aire) {
+                final int x1 = 8;
+                final int x2 = 6;
+                borneMaxi = x1;
+                borneMini = x2;
             }
-            else if((x + diff) / aire <= 2){
-                borne_maxi = 5;
-                borne_mini = 3;
 
+            if ((y + diff) / aire <= 1) {
+                o = 0;
+            } else if ((y + diff) / aire <= 2) {
+                o = (int) aire;
+            } else if ((y + diff) / aire <= (int) aire) {
+                o = (int) aire * 2;
             }
-            else if((x + diff) / aire <= 3){
-                borne_maxi = 8;
-                borne_mini = 6;
-            }
 
-            if((y + diff) / aire <= 1 ){ o = 0; }
-            else if((y + diff) / aire <= 2 ){ o = 3; }
-            else if((y + diff) / aire <= 3 ){ o = 6; }
-
-            for (int j = borne_mini; j <= borne_maxi; j++) {
+            for (int j = borneMini; j <= borneMaxi; j++) {
                 char v1 = getValue(j, o);
-                char v2 = getValue(j, o+1);
-                char v3 = getValue(j, o+2);
+                char v2 = getValue(j, o + diff1);
+                char v3 = getValue(j, o + diff2);
                 Collections.addAll(impossibleChar, v1, v2, v3);
             }
 
-        }
-        else {
-            double aire = 4.0;
+        } else {
+            final double aire;
+            aire = 4.0;
+            if ((x + diff) / aire <= 1) {
+                final int x1 = 3;
+                final int x2 = 0;
+                borneMaxi = x1;
+                borneMini = x2;
+            } else if ((x + diff) / aire <= 2) {
+                final int x1 = 7;
+                final int x2 = 4;
+                borneMaxi = x1;
+                borneMini = x2;
 
-            if((x + diff) / aire <= 1){
-                borne_maxi = 3;
-                borne_mini = 0;
-
+            } else if ((x + diff) / aire <= (aire - diff1)) {
+                final int x1 = 11;
+                final int x2 = 8;
+                borneMaxi = x1;
+                borneMini = x2;
+            } else if ((x + diff) / aire <= aire) {
+                final int x1 = 15;
+                final int x2 = 12;
+                borneMaxi = x1;
+                borneMini = x2;
             }
-            else if((x + diff) / aire <= 2){
-                borne_maxi = 7;
-                borne_mini = 4;
 
-            }
-            else if((x + diff) / aire <= 3){
-                borne_maxi = 11;
-                borne_mini = 8;
-            }
-
-            else if((x + diff) / aire <= 4){
-                borne_maxi = 15;
-                borne_mini = 12;
+            if ((y + diff) / aire <= 1) {
+                o = 0;
+            } else if ((y + diff) / aire <= 2) {
+                o = (int) aire;
+            } else if ((y + diff) / aire <= ((int) aire - diff1)) {
+                o = (int) aire * 2;
+            } else if ((y + diff) / aire <= (int) aire) {
+                o = (int) aire * diff3;
             }
 
-            if((y + diff) / aire <= 1 ){ o = 0; }
-            else if((y + diff) / aire <= 2 ){ o = 4; }
-            else if((y + diff) / aire <= 3 ){ o = 8; }
-            else if((y + diff) / aire <= 4 ){ o = 12; }
-
-            for (int j = borne_mini; j <= borne_maxi; j++) {
+            for (int j = borneMini; j <= borneMaxi; j++) {
                 char v1 = getValue(j, o);
-                char v2 = getValue(j, o+1);
-                char v3 = getValue(j, o+2);
-                char v4 = getValue(j, o+3);
+                char v2 = getValue(j, o + diff1);
+                char v3 = getValue(j, o + diff2);
+                char v4 = getValue(j, o + diff3);
                 Collections.addAll(impossibleChar, v1, v2, v3, v4);
             }
         }

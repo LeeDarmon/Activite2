@@ -1,7 +1,7 @@
 /**
  * Solveur de sudoku.
  */
-public class Solveur {
+public final class Solveur {
     /**
      *  grille a resoudre.
      */
