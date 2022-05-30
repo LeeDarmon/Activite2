@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 /**
  * Tests pour solveur.
  */
-public class TestSolveur {
+public final class TestSolveur {
     /**
      * Tests methode resoudreSudoku() avec grille complete.
      */

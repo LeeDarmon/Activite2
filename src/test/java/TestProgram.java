@@ -1,16 +1,16 @@
 import org.junit.jupiter.api.Test;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 
 /**
  * Tests pour grille.
  */
-public class TestProgram {
+public final class TestProgram {
     /**
      * Tests methode getDimension().
      */
@@ -374,5 +374,10 @@ public class TestProgram {
         assertTrue(grille2.checkBloc(secondExtend, quatriemeExtend, '4'));
         assertTrue(grille2.checkBloc(quatriemeExtend, quatriemeExtend, '4'));
         assertTrue(grille2.checkBloc(quatriemeExtend, quatriemeExtend, '4'));
+    }
+
+    @Test
+    void testMain() {
+        Program.main(new String[] {"parameter 1", "parameter 2"});
     }
 }
